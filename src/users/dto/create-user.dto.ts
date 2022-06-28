@@ -20,7 +20,7 @@ export class CreateUserDto {
   @IsString()
   @ApiProperty({
     description: 'Senha do usuário',
-    example: 'danilo2012'
+    example: 'danilo!2012'
   })
   password: string;
 
