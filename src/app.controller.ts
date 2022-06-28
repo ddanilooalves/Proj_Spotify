@@ -1,7 +1,6 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { AppService } from './app.service';
-import { Request } from 'express';
 
 @ApiTags('status')
 @Controller()
@@ -18,9 +17,8 @@ export class AppController {
   @ApiOperation({
     summary: 'Visualizar status da aplicação'
   })
-  getStatus(@Req() req: Request) {
-    const baseUrl = req.protocol + '://' + req.get('host');
-    return this.appService.getStatus(baseUrl);
+  getStatus(): string {
+    return this.appService.getStatus('http://localhost:3000');
   }
 }
 

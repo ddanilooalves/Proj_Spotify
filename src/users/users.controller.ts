@@ -9,7 +9,13 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
+  
+  /**
+   * Recebe uma requisição GET e retorna um objeto de status
+   * da aplicação com a URL de documentação
+   * @param req Objeto de Request do Express
+   * @returns Objeto de status da aplicação
+   */
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
