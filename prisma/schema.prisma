@@ -19,22 +19,39 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  profiles Profile[]
+
+  @@map("user")
 }
 
 model Profile {
   id String @id @default(uuid())
-  username String
-  imgUrl String
+  title    String
+  imageUrl String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  musics Music[]
+
+  @@map("profile")
 }
 
-model Musics {
-  id String @id @default(uuid())
-  song String
-  gender String
+model Music {
+  id                 String @id @default(uuid())
+  title              String @unique 
+  coverImageUrl      String
+  Year               Int
+  musicYouTubeUrl String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  profiles Profile[]
+
+  @@map("music")
 }
