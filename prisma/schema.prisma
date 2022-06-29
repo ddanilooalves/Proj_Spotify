@@ -54,6 +54,20 @@ model Music {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   profiles Profile[]
+  genders Gender[]
 
   @@map("music")
+}
+
+model Gender {
+  id String @id @default(uuid())
+
+  name String @unique()
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  musics Music[]
+
+  @@map("gender")
 }
