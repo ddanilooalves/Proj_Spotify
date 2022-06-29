@@ -43,7 +43,7 @@ model Profile {
 
 model Music {
   id                 String @id @default(uuid())
-  title              String @unique 
+  title              String @unique
   coverImageUrl      String
   Year               Int
   musicYouTubeUrl String
