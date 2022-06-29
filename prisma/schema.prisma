@@ -24,6 +24,7 @@ model User {
 model Profile {
   id String @id @default(uuid())
   username String
+  imgUrl String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
