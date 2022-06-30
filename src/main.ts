@@ -15,6 +15,11 @@ async function bootstrap() {
   .setVersion('1.0.0')
   .addTag('status')
   .addTag('auth')
+  .addTag('musics')
+  .addTag('homepage')
+  .addTag('profiles')
+  .addTag('user')
+  .addTag('genders')
   .addBearerAuth()
   .build()
 
