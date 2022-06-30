@@ -15,16 +15,15 @@ export class UsersService {
       password: await bcrypt.hash(dto.password, 10),
     };
 
-    return this.prisma.user
-      .create({
-        data,
-        select: {
+    return this.prisma.user.create({
+      data,
+      select: {
         name: true,
         email: true,
         isAdmin: true,
         password: false,
-        },
-      });
+      },
+    });
   }
 
   async findAll() {
@@ -34,14 +33,16 @@ export class UsersService {
         email: true,
         isAdmin: true,
         password: false,
-        },
-      });
+      },
+    });
   }
 
   async findOne(id: string) {
-    return await this.prisma.user.findUnique({ where: {
-      id,
-  }});
+    return await this.prisma.user.findUnique({
+      where: {
+        id,
+      },
+    });
   }
 
   async update(id: string, dto: UpdateUserDto) {
@@ -54,7 +55,7 @@ export class UsersService {
         email: true,
         isAdmin: true,
         password: false,
-        },
+      },
     });
   }
 
