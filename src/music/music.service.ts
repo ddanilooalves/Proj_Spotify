@@ -32,45 +32,50 @@ export class MusicService {
     return await this.findById(id);
   }
 
-  create(user: User,dto: CreateMusicDto){
-
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+  create(user: User, dto: CreateMusicDto) {
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
 
     const data: Prisma.MusicCreateInput = {
       ...dto,
-      genders:{connect: dto.genders.map((genderId)=> ({
-        id: genderId
-      }))}
-      }
-  
-    return this.prisma.music.create({data,
-      select: {
-        title: true,
-        id: true,
-        genders: {
-          select: {
-            name: true,
-            }
-          }
-        }
-      }
-      
-      ).catch(this.handleError);
+      genders: {
+        connect: dto.genders.map((genderId) => ({
+          id: genderId,
+        })),
+      },
+    };
+
+    return this.prisma.music
+      .create({
+        data,
+        select: {
+          title: true,
+          id: true,
+          genders: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      })
+      .catch(this.handleError);
   }
 
   async update(user: User, id: string, dto: UpdateMusicDto): Promise<Music> {
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
 
     await this.findById(id);
 
-    const data: Partial<Prisma.MusicCreateInput> = { ...dto,
-    genders: {connect: dto.genders.map((genderId) => ({
-      id: genderId
-    }))}
+    const data: Partial<Prisma.MusicCreateInput> = {
+      ...dto,
+      genders: {
+        connect: dto.genders.map((genderId) => ({
+          id: genderId,
+        })),
+      },
     };
 
     return this.prisma.music
@@ -81,8 +86,8 @@ export class MusicService {
       .catch(this.handleError);
   }
   async delete(user: User, id: string) {
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
 
     await this.findById(id);

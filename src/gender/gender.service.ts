@@ -30,18 +30,18 @@ export class GenderService {
     return this.findById(id);
   }
 
-  create(user: User,dto: CreateGenderDto): Promise<Gender> {
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+  create(user: User, dto: CreateGenderDto): Promise<Gender> {
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
     const data: Gender = { ...dto };
 
     return this.prisma.gender.create({ data }).catch(this.handleError);
   }
 
-  async update(user: User,id: string, dto: UpdateGenderDto): Promise<Gender> {
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+  async update(user: User, id: string, dto: UpdateGenderDto): Promise<Gender> {
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
     await this.findById(id);
 
@@ -55,10 +55,10 @@ export class GenderService {
       .catch(this.handleError);
   }
   async delete(user: User, id: string) {
-    if(!user.isAdmin){
-      throw new UnauthorizedException("Usuario não autenticado")
+    if (!user.isAdmin) {
+      throw new UnauthorizedException('Usuario não autenticado');
     }
-    
+
     await this.findById(id);
     await this.prisma.gender.delete({ where: { id } });
   }

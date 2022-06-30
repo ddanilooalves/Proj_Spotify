@@ -9,15 +9,16 @@ import { ProfileModule } from './profile/profile.module';
 import { HomepageModule } from './homepage/homepage.module';
 import { MusicModule } from './music/music.module';
 
-
 @Module({
-  imports: [ MusicModule,
+  imports: [
+    MusicModule,
     PrismaModule,
     GenderModule,
     ProfileModule,
     UsersModule,
     HomepageModule,
-    AuthModule,],
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

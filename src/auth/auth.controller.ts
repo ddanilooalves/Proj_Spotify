@@ -19,7 +19,7 @@ import { LoggedUser } from './logged-user.decorator';
 @ApiTags('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
-  
+
   /**
    * Recebe uma requisição GET e retorna um objeto de status
    * da aplicação com a URL de documentação
@@ -38,10 +38,10 @@ export class AuthController {
   @Get()
   @UseGuards(AuthGuard())
   @ApiOperation({
-    summary: 'Retorna usuario autenticado no momento'
+    summary: 'Retorna usuario autenticado no momento',
   })
   @ApiBearerAuth()
-  profile(@LoggedUser() user: User){
-    return user
+  profile(@LoggedUser() user: User) {
+    return user;
   }
 }

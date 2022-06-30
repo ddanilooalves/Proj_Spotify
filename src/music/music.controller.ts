@@ -56,7 +56,11 @@ export class MusicController {
   @ApiOperation({
     summary: 'Editar uma musica pelo ID',
   })
-  update(@LoggedUser() user: User, @Param('id') id: string, @Body() dto: UpdateMusicDto): Promise<Music> {
+  update(
+    @LoggedUser() user: User,
+    @Param('id') id: string,
+    @Body() dto: UpdateMusicDto,
+  ): Promise<Music> {
     return this.musicService.update(user, id, dto);
   }
 

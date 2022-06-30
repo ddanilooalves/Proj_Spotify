@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards} from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HomepageService } from './homepage.service';
@@ -11,12 +11,10 @@ export class HomepageController {
   constructor(private readonly homepageService: HomepageService) {}
 
   @ApiOperation({
-    summary: "Homepage"
+    summary: 'Homepage',
   })
-
   @Get(':id')
   findByGender(@Param('id') id: string) {
     return this.homepageService.findByGender(id);
   }
-
 }

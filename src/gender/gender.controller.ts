@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  HttpStatus,
+  UseGuards,
+} from '@nestjs/common';
 import { GenderService } from './gender.service';
 import { CreateGenderDto } from './dto/create-gender.dto';
 import { UpdateGenderDto } from './dto/update-gender.dto';
@@ -16,7 +27,7 @@ export class GenderController {
 
   @Post()
   @ApiOperation({
-    summary: 'Cria um novo genero'
+    summary: 'Cria um novo genero',
   })
   create(@LoggedUser() user: User, @Body() createGenderDto: CreateGenderDto) {
     return this.genderService.create(user, createGenderDto);
@@ -24,7 +35,7 @@ export class GenderController {
 
   @Get()
   @ApiOperation({
-    summary: 'Procura todos os generos'
+    summary: 'Procura todos os generos',
   })
   findAll() {
     return this.genderService.findAll();
@@ -32,7 +43,7 @@ export class GenderController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Procura genero por ID'
+    summary: 'Procura genero por ID',
   })
   findOne(@Param('id') id: string) {
     return this.genderService.findOne(id);
@@ -40,16 +51,20 @@ export class GenderController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Atualiza o genero por ID'
+    summary: 'Atualiza o genero por ID',
   })
-  update(@LoggedUser() user: User, @Param('id') id: string, @Body() updateGenderDto: UpdateGenderDto) {
+  update(
+    @LoggedUser() user: User,
+    @Param('id') id: string,
+    @Body() updateGenderDto: UpdateGenderDto,
+  ) {
     return this.genderService.update(user, id, updateGenderDto);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
-    summary: 'Deleta um genero por ID'
+    summary: 'Deleta um genero por ID',
   })
   delete(@LoggedUser() user: User, @Param('id') id: string) {
     return this.genderService.delete(user, id);

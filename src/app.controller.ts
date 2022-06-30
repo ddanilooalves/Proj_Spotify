@@ -15,10 +15,9 @@ export class AppController {
    */
   @Get()
   @ApiOperation({
-    summary: 'Visualizar status da aplicação'
+    summary: 'Visualizar status da aplicação',
   })
   getStatus(): string {
     return this.appService.getStatus('http://localhost:3000');
   }
 }
-
