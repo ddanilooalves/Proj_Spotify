@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -9,7 +18,7 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-  
+
   /**
    * Recebe uma requisição GET e retorna um objeto de status
    * da aplicação com a URL de documentação
@@ -18,7 +27,7 @@ export class UsersController {
    */
   @Post()
   @ApiOperation({
-    summary: 'Cria um novo usuario'
+    summary: 'Cria um novo usuario',
   })
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -28,7 +37,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Get()
   @ApiOperation({
-    summary: 'Visualiza todos os usuarios'
+    summary: 'Visualiza todos os usuarios',
   })
   findAll() {
     return this.usersService.findAll();
@@ -38,7 +47,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Get(':id')
   @ApiOperation({
-    summary: 'Localiza o usuario por ID'
+    summary: 'Localiza o usuario por ID',
   })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
@@ -48,7 +57,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({
-    summary: 'Atualiza um usuario por ID'
+    summary: 'Atualiza um usuario por ID',
   })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
@@ -58,7 +67,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({
-    summary: 'Deleta um usuario por ID'
+    summary: 'Deleta um usuario por ID',
   })
   delete(@Param('id') id: string) {
     return this.usersService.delete(id);
