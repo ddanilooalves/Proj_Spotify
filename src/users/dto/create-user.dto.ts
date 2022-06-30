@@ -5,14 +5,14 @@ export class CreateUserDto {
     @IsString()
     @ApiProperty({
         description: 'Nome do usuario',
-        example: "Alex Faria" 
+        example: "Danilo Alves" 
     })
     name: string;
 
     @IsString()
     @ApiProperty({
         description: 'Email do usuario',
-        example: "alexcaras1@hotmail.com"
+        example: "daniloalves@hotmail.com"
     })
     email: string;
 
@@ -23,13 +23,13 @@ export class CreateUserDto {
   })
     @ApiProperty({
         description: "Senha do usuario",
-        example: "Abcd@1234"
+        example: "Danilo@1234"
     })
     password: string;
     
     @ApiProperty({
         description: "Confirmação de senha deve ser igual",
-        example: "Abcd@1234"
+        example: "Danilo@1234"
     })
     confirmPassword: string;
 
@@ -37,7 +37,7 @@ export class CreateUserDto {
     @IsPositive()
     @ApiProperty({
         description: "CPF para cadastro do usario",
-        example: "99999999931"
+        example: "10000000011"
     })
     cpf: number;
 

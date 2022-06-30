@@ -28,14 +28,14 @@ export class CreateMusicDto {
   @IsString()
   @ApiProperty({
     description: "Musica:  ",
-    example: "colocar"
+    example: "https://studiosol-a.akamaihd.net/tb/letras-blog/wp-content/uploads/2019/08/54b6a78-poetas-no-topo.png"
   })
   musicYouTubeUrl: string;
 
   @IsUUID(undefined, {each: true})
   @ApiProperty({
     description: "ID do genero das musicas",
-    example: ['colocar']
+    example: ['c5b1706c-11d3-480f-bfe8-4c1f22af885a']
   })
   genders: string[];
 }
