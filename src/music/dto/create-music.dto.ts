@@ -34,7 +34,7 @@ export class CreateMusicDto {
 
   @IsUUID(undefined, {each: true})
   @ApiProperty({
-    description: "ID do genero de jogos",
+    description: "ID do genero das musicas",
     example: ['colocar']
   })
   genders: string[];
