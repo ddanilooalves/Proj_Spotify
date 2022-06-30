@@ -13,6 +13,7 @@ export class HomepageController {
   @ApiOperation({
     summary: "Homepage"
   })
+
   @Get(':id')
   findByGender(@Param('id') id: string) {
     return this.homepageService.findByGender(id);
