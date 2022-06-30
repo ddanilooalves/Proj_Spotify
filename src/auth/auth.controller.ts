@@ -19,7 +19,13 @@ import { LoggedUser } from './logged-user.decorator';
 @ApiTags('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
-
+  
+  /**
+   * Recebe uma requisição GET e retorna um objeto de status
+   * da aplicação com a URL de documentação
+   * @param req Objeto de Request do Express
+   * @returns Objeto de status da aplicação
+   */
   @Post()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
