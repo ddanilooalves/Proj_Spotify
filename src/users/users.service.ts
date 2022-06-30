@@ -30,6 +30,7 @@ export class UsersService {
   async findAll() {
     return await this.prisma.user.findMany({
       select: {
+        id: true,
         name: true,
         email: true,
         isAdmin: true,
