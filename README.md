@@ -48,7 +48,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Authors - [Alex Faria](https://github.com/AlexFariaa) - [Danilo Alves](https://github.com/ddanilooalves)
+- Authors - [Alex Faria, Danilo Alves](https://github.com/AlexFariaa, https://github.com/ddanilooalves)
 
 ## License
 
